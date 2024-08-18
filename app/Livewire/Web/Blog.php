@@ -9,7 +9,6 @@ class Blog extends Component
 {
     #[Layout('layouts.index')]
     public function render() {
-
         return view('livewire.web.blog');
     }
 }

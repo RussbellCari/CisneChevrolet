@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IndicatorSeeder::class);
         $this->call(GroupSeeder::class);
 
-        Member::factory(100)->create();
+        $this->call(MemberSeeder::class);
     }
 }

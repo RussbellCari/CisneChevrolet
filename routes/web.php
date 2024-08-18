@@ -1,10 +1,13 @@
 <?php
 
+use App\Livewire\Admin\AttendanceMain;
+use App\Livewire\Admin\MemberMain;
 use App\Livewire\Dashboard\Main;
 use App\Livewire\Web\About;
 use App\Livewire\Web\Blog;
 use App\Livewire\Web\Contact;
 use App\Livewire\Web\Team;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,4 +24,6 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard',Main::class)->name('dashboard');
+    Route::get('/attendance',AttendanceMain::class)->name('attendance');
+    Route::get('/members',MemberMain::class)->name('members');
 });

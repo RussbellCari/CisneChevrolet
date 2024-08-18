@@ -12,28 +12,46 @@ class GroupSeeder extends Seeder{
      */
     public function run(): void{
         Group::create([
-            'name' => 'GRUPO 1',
+            'name' => 'BETANIA',
             'text' => 'Filipenses 4:13',
             'motto' => 'Lema 1',
             'song' => 'cancion 1',
             'church_id' => 1,
         ]);
-
         Group::create([
-            'name' => 'GRUPO 2',
-            'text' => 'Filipenses 4:13',
+            'name' => 'EMANUEL',
+            'text' => 'Mateo 4:13',
             'motto' => 'Lema 2',
             'song' => 'cancion 2',
             'church_id' => 1,
         ]);
-
         Group::create([
-            'name' => 'GRUPO 3',
-            'text' => 'Filipenses 4:13',
+            'name' => 'EFESO',
+            'text' => 'Marcos 4:13',
             'motto' => 'Lema 3',
             'song' => 'cancion 3',
             'church_id' => 1,
         ]);
-
+        Group::create([
+            'name' => 'HEME AQUI',
+            'text' => 'Lucas 4:13',
+            'motto' => 'Lema 3',
+            'song' => 'cancion 3',
+            'church_id' => 1,
+        ]);
+        Group::create([
+            'name' => 'JOVENES',
+            'text' => 'Apocalipsis 4:13',
+            'motto' => 'Lema 3',
+            'song' => 'cancion 3',
+            'church_id' => 1,
+        ]);
+        Group::create([
+            'name' => 'MARANATHA',
+            'text' => 'Salmos 4:13',
+            'motto' => 'Lema 3',
+            'song' => 'cancion 3',
+            'church_id' => 1,
+        ]);
     }
 }

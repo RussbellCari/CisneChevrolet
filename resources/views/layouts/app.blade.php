@@ -12,8 +12,8 @@
         @wireUiScripts
         <!-- Styles -->
         @livewireStyles
-        <link rel="stylesheet" href="build/assets/app-VS5nWvfc.css">
-        <script src="build/assets/app-DIM0x79V.js"></script>
+        {{-- <link rel="stylesheet" href="build/assets/app-VS5nWvfc.css"> --}}
+        {{-- <script src="build/assets/app-DIM0x79V.js"></script> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -24,12 +24,13 @@
     <!-- https://tailwindcomponents.com/component/dashboard-template/landing -->
         <div>
             <x-dialog/>
-            <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+            <x-notifications />
+            <div x-data="{ sidebarOpen: false }" class="flex h-screen">
                 <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
                 @livewire('dashboard.sidebar')
                 <div class="flex flex-col flex-1 overflow-hidden">
                     @livewire('dashboard.header')
-                    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-indigo-100">
                         <div class="py-8 mx-auto">
                             {{ $slot }}
                         </div>
