@@ -56,11 +56,6 @@ class AttendanceMain extends Component{
         $this->attendances=Attendance::where('date',now()->toDateString())->pluck('study','member_id');
     }
 
-    public function destroy(Member $member){
-        //$member->delete();
-        $member->update(['active'=>false]);
-        return redirect()->route('attendance');
-    }
 
     public function updatingSearch(){
         $this->resetPage();

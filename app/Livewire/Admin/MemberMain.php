@@ -20,7 +20,7 @@ class MemberMain extends Component{
     public function destroy(Member $member){
         //$member->delete();
         $member->update(['active'=>false]);
-        return redirect()->route('attendance');
+        return redirect()->route('members');
     }
 
     public function updatingSearch(){

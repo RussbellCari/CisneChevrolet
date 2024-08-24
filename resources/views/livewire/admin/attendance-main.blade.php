@@ -1,3 +1,4 @@
+@inject('carbon', 'Carbon\Carbon')
 <div class="py-2">
     <div class="mx-6 mb-4">
         <h2 class="text-3xl font-bold text-gray-800">Miembros por grupos</h2>
@@ -55,7 +56,12 @@
                   </td>
                   <td class="px-6 py-4 text-xs">{{$member->firstname}}, {{$member->lastname}}</td>
                   <td class="px-6 py-4 text-xs">{{$member->cellphone}}</td>
-                  <td class="px-6 py-4 text-xs">{{$member->birthdate}}</td>
+                  <td class="px-6 py-4 text-xs"><i class="fa-solid fa-cake-candles text-lg {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' text-yellow-500':' text-gray-500'}}"></i>
+                    {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' (SI)':' (NO)'}}
+                    {{$carbon::parse($member->birthdate)->format('d/m')}}
+                    {{-- -{{$carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')==$carbon::now()->format('Y-m-d')}}- --}}
+                    {{-- {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' text-yellow-500':' text-gray-500'}} --}}
+                  </td>
                   <td class="px-6 py-4 text-xs">{{$member->baptism}}</td>
                   <td class="px-6 py-4 flex gap-1 justify-end">
                     {{-- {{$attendances->contains($member->id)}} --}}
