@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('document');
             $table->string('address')->nullable();
             $table->string('cellphone')->nullable();
+            $table->string('email')->nullable();
             $table->date('birthdate')->nullable();
             $table->date('baptism')->nullable();
             $table->enum('position',['MIEMBRO','MAESTRO(A)','ASOCIADO(A)'])->default('MIEMBRO');

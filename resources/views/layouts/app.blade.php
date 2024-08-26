@@ -12,13 +12,14 @@
         @wireUiScripts
         <!-- Styles -->
         @livewireStyles
-        {{-- <link rel="stylesheet" href="build/assets/app-VS5nWvfc.css"> --}}
-        {{-- <script src="build/assets/app-DIM0x79V.js"></script> --}}
+        {{-- <link rel="stylesheet" href="build/assets/app-CjG8IKAm.css">
+        <script src="build/assets/app-DgUFBvlu.js"></script> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script> --}}
     </head>
     <body class="font-sans antialiased">
     <!-- https://tailwindcomponents.com/component/dashboard-template/landing -->

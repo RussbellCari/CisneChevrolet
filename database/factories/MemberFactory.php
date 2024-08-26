@@ -20,8 +20,10 @@ class MemberFactory extends Factory
         return [
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
+            'document' => $this->faker->numerify('########'),
             'address' => $this->faker->address(),
             'cellphone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
             'birthdate' => $this->faker->date(),
             'baptism' => $this->faker->date(),
             'group_id' => Group::all()->random()->id,

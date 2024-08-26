@@ -18,4 +18,11 @@ class Member extends Model
         return $this->hasMany(Attendance::class);
     }
 
+    //Query scopes
+    public function scopeActive($query,$status){
+        //dd($status);
+        if($status="Seleccione estado"){
+            return $query->whereYear('active',$status);
+        }
+    }
 }
