@@ -13,13 +13,15 @@ use WireUi\Traits\WireUiActions;
 class AttendanceMain extends Component{
     use WithPagination;
     use WireUiActions;
-    public $isOpen=false;
+    public $isOpenModalRelation=false;
     public $search,$group_id;
     public $attendances,$studies;
+    public $date,$dateLarge;
 
     public function mount(){
         $this->attendances=Attendance::where('date',now()->toDateString())->pluck('study','member_id');
-        //$this->studies=Attendance::pluck('study');
+        $this->date=Carbon::now()->format('Y-m-d');
+        $this->dateLarge=Carbon::now()->locale('es')->translatedFormat('l d \d\e F \d\e\l Y');
     }
 
     public function render(){
@@ -31,7 +33,7 @@ class AttendanceMain extends Component{
         return view('livewire.admin.attendance-main',compact('members','groups','leaders'));
     }
 
-    public function study_save(Member $member,$days){
+    public function store_study(Member $member,$days){
         $fechaHoy = now()->toDateString();
         $registroExistente = Attendance::where('date',$fechaHoy)->where('member_id',$member->id)->first();
         if ($registroExistente) {
@@ -56,6 +58,9 @@ class AttendanceMain extends Component{
         $this->attendances=Attendance::where('date',now()->toDateString())->pluck('study','member_id');
     }
 
+    public function store_relation(){
+
+    }
 
     public function updatingSearch(){
         $this->resetPage();

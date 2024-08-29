@@ -6,16 +6,34 @@
     </div>
     <div class="mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4 dark:bg-gray-800/50 dark:bg-gradient-to-bl">
+        <div class="flex flex-wrap justify-between gap-1 mb-2">
+            <div class="mt-2 ml-2">{{$dateLarge}}</div>
+            <div><x-input wire:model="date" type="date"/></div>
+        </div>
         <div class="flex flex-wrap justify-between gap-1">
             <!--Filtros   -->
-            <div class="flex sm:w-48 w-full">
+            <div class="flex sm:w-96 w-full gap-2 items-end">
                 <div class="mb-2 w-full text-gray-500">
+                    {{-- <x-select placeholder="Seleccione" wire:model.live="group_id" :options="$groups" option-label="name" option-value="id"/> --}}
+                    {{-- <x-select placeholder="Seleccione grupo" wire:model.live="group_id">
+                        @foreach ($groups as $group)
+                            <x-select.option label="{{$group->name}}" value="{{$group->id}}" />
+                        @endforeach
+                    </x-select> --}}
                     <x-native-select wire:model.live="group_id">
                         <option>Seleccione grupo</option>
                         @foreach ($groups as $group)
-                            <option value="{{$group->id}}">{{$group->name}}</option>
+                            <option value="{{$group->id}}" class="text-xs">{{$group->name}}</option>
                         @endforeach
                     </x-native-select>
+                </div>
+                <div class="mb-2">
+                    <x-button pink label="Relación" icon="plus" x-on:click="$openModal('modalRelation')"/>
+                    @include('livewire.admin.relation-create')
+                </div>
+                <div class="mb-2">
+                    <x-button green label="Misión" icon="plus" x-on:click="$openModal('modalMission')"/>
+                    @include('livewire.admin.mission-create')
                 </div>
                 <div class="mb-2" wire:loading>
                     <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,8 +42,8 @@
                     </svg>
                 </div>
             </div>
-            <div class="mb-2 sm:w-80 w-full text-gray-500">
-                <x-native-select>
+            <div class="mb-2 sm:w-72 w-full text-gray-500">
+                <x-native-select class="text-xs">
                     @foreach ($leaders as $leader)
                         <option value="{{$leader->id}}">{{$leader->firstname}} {{$leader->lastname}} - {{$leader->position}}</option>
                     @endforeach
@@ -56,9 +74,12 @@
                   </td>
                   <td class="px-6 py-4 text-xs">{{$member->firstname}}, {{$member->lastname}}</td>
                   <td class="px-6 py-4 text-xs">{{$member->cellphone}}</td>
-                  <td class="px-6 py-4 text-xs"><i class="fa-solid fa-cake-candles text-lg {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' text-yellow-500':' text-gray-500'}}"></i>
-                    {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' (SI)':' (NO)'}}
+                  <td class="px-6 py-4 text-xs"><i class="fa-solid fa-cake-candles text-lg {{($carbon::parse($member->birthdate)->addYears($carbon::now()->format('Y')-$carbon::parse($member->birthdate)->format('Y'))->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears($carbon::now()->format('Y')-$carbon::parse($member->birthdate)->format('Y'))->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' text-yellow-600':' text-gray-500'}}"></i>
+                    {{($carbon::parse($member->birthdate)->addYears($carbon::now()->format('Y')-$carbon::parse($member->birthdate)->format('Y'))->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears($carbon::now()->format('Y')-$carbon::parse($member->birthdate)->format('Y'))->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' (SI)':' (NO)'}}
+                    {{-- {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' (SI)':' (NO)'}} --}}
                     {{$carbon::parse($member->birthdate)->format('d/m')}}
+                    {{-- años: {{round($carbon::parse($member->birthdate)->diffInYears($carbon::now()->format('Y-m-d'))); }} --}}
+                    {{-- años: {{$carbon::now()->format('Y')-$carbon::parse($member->birthdate)->format('Y')}} --}}
                     {{-- -{{$carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')==$carbon::now()->format('Y-m-d')}}- --}}
                     {{-- {{($carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')<=$carbon::now()->format('Y-m-d') && $carbon::parse($member->birthdate)->addYears(4)->format('Y-m-d')>=$carbon::now()->subDay(7)->format('Y-m-d'))?' text-yellow-500':' text-gray-500'}} --}}
                   </td>
@@ -108,13 +129,13 @@
                     @endphp
 
                     <ol class="flex">
-                        <li wire:click="study_save({{$member}},1)" class="{{$color1}} w-4 text-center text-gray-800 hover:scale-125 cursor-pointer">1</li>
-                        <li wire:click="study_save({{$member}},2)" class="{{$color2}} w-4 text-center text-gray-700 hover:scale-125 cursor-pointer">2</li>
-                        <li wire:click="study_save({{$member}},3)" class="{{$color3}} w-4 text-center text-gray-600 hover:scale-125 cursor-pointer">3</li>
-                        <li wire:click="study_save({{$member}},4)" class="{{$color4}} w-4 text-center text-gray-500 hover:scale-125 cursor-pointer">4</li>
-                        <li wire:click="study_save({{$member}},5)" class="{{$color5}} w-4 text-center text-gray-300 hover:scale-125 cursor-pointer">5</li>
-                        <li wire:click="study_save({{$member}},6)" class="{{$color6}} w-4 text-center text-gray-200 hover:scale-125 cursor-pointer">6</li>
-                        <li wire:click="study_save({{$member}},7)" class="{{$color7}} w-4 text-center text-gray-100 hover:scale-125 cursor-pointer">7</li>
+                        <li wire:click="store_study({{$member}},1)" class="{{$color1}} w-4 text-center text-gray-800 hover:scale-125 cursor-pointer">1</li>
+                        <li wire:click="store_study({{$member}},2)" class="{{$color2}} w-4 text-center text-gray-700 hover:scale-125 cursor-pointer">2</li>
+                        <li wire:click="store_study({{$member}},3)" class="{{$color3}} w-4 text-center text-gray-600 hover:scale-125 cursor-pointer">3</li>
+                        <li wire:click="store_study({{$member}},4)" class="{{$color4}} w-4 text-center text-gray-500 hover:scale-125 cursor-pointer">4</li>
+                        <li wire:click="store_study({{$member}},5)" class="{{$color5}} w-4 text-center text-gray-300 hover:scale-125 cursor-pointer">5</li>
+                        <li wire:click="store_study({{$member}},6)" class="{{$color6}} w-4 text-center text-gray-200 hover:scale-125 cursor-pointer">6</li>
+                        <li wire:click="store_study({{$member}},7)" class="{{$color7}} w-4 text-center text-gray-100 hover:scale-125 cursor-pointer">7</li>
                     </ol>
                   </td>
                 </tr>
