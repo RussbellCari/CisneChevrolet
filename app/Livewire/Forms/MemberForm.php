@@ -11,4 +11,6 @@ class MemberForm extends Form
     #[Rule('required')]
     public $firstname,$lastname,$document;
     public $address,$cellphone,$email,$birthdate,$baptism,$position,$group_id;
+
+
 }

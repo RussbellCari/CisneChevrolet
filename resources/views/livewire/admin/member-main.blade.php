@@ -71,10 +71,12 @@
                 @endforeach
               </tbody>
             </table>
+            <div class="mt-2">
+                @if(!$members->count())
+                <x-alert title="* No existe ningun registro coincidente" info />
+                @endif
+            </div>
         </div>
-        @if(!$members->count())
-            No existe ningun registro coincidente
-        @endif
         <div class="px-6 py-3">
             {{$members->links()}}
         </div>

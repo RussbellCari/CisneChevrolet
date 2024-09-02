@@ -2,58 +2,55 @@
 
 namespace App\Livewire\Admin;
 
-use App\Livewire\Forms\MemberForm;
+use App\Livewire\Forms\GroupForm;
 use App\Models\Group;
-use App\Models\Member;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Traits\WireUiActions;
 
-class MemberMain extends Component{
+class GroupMain extends Component{
 
     use WithPagination;
     use WireUiActions;
 
     public $isOpen=false;
-    public $search;
-    public MemberForm $form;
-    public ?Member $member;
-    public $active=true;
+    public $search,$active=true;
+    public GroupForm $form;
+    public ?Group $group;
 
     public function render(){
-        $members=Member::where('firstname','LIKE','%'.$this->search.'%')->where('active',$this->active)->paginate();
-        $groups=Group::all();
-        return view('livewire.admin.member-main',compact('members','groups'));
+        $groups=Group::where('name','LIKE','%'.$this->search.'%')->where('active',$this->active)->paginate();
+        return view('livewire.admin.group-main',compact('groups'));
     }
 
-    public function confirmSimple($item): void{
+    public function confirmSimple($group): void{
         $this->dialog()->confirm([
-            'title'=> '¿Seguro que deseas eliminar?',
+            'title'=> '¿Seguro que deseas eliminar el registro?',
             'icon'=> 'error',
             'method'=> 'destroy',
-            'params'=> $item
+            'params'=> $group
         ]);
     }
 
     public function create(){
         $this->isOpen=true;
         $this->form->reset();
-        $this->reset(['member']);
+        $this->reset(['group']);
         $this->resetValidation();
     }
 
-    public function edit(Member $member){
+    public function edit(Group $group){
         // dd($member);
-        $this->member=$member;
-        $this->form->fill($member);
+        $this->group=$group;
+        $this->form->fill($group);
         $this->isOpen=true;
         $this->resetValidation();
     }
 
-    public function destroy(Member $member){
+    public function destroy(Group $group){
         //$member->delete();
-        $member->update(['active'=>false]);
+        $group->update(['active'=>false]);
         //return redirect()->route('members');
         $this->notification()->send([
             'icon' => 'info',
@@ -63,14 +60,14 @@ class MemberMain extends Component{
 
     public function store(){
         $this->validate();
-        if(!isset($this->member->id)){
-            Member::create($this->form->all());
+        if(!isset($this->group->id)){
+            Group::create($this->form->all());
             $this->notification()->send([
                 'icon' => 'success',
                 'title' => 'Registro creado...',
             ]);
         }else{
-            $this->member->update($this->form->all());
+            $this->group->update($this->form->all());
             $this->notification()->send([
                 'icon' => 'success',
                 'title' => 'Registro actualizado...',
@@ -80,8 +77,8 @@ class MemberMain extends Component{
     }
 
 
-    public function renovate(Member $member){
-        $member->update(['active'=>true]);
+    public function renovate(Group $group){
+        $group->update(['active'=>true]);
         $this->notification()->send([
             'icon' => 'success',
             'title' => 'Se restauró al miembro al grupo activos',
@@ -91,4 +88,5 @@ class MemberMain extends Component{
     public function updatingSearch(){
         $this->resetPage();
     }
+
 }

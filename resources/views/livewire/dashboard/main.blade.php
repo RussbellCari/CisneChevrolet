@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">23</h4>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalCommunion}}</h4>
                         <div class="text-indigo-700 font-bold">COMUNIÓN</div>
                         <div class="text-gray-500 text-xs">
                             <ul>
@@ -28,12 +28,12 @@
                     </div>
 
                     <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">45</h4>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalRelation}}</h4>
                         <div class="text-orange-700 font-bold">RELACIÓN</div>
                         <div class="text-gray-500 text-xs">
                             <ul>
-                                <li class="list-disc">Participación en grupos pequeños o unidad de acción</li>
-                                <li class="list-disc">Amigos de esperanza</li>
+                                <li class="list-disc">Participación en grupos pequeños ({{$rpgroups}})</li>
+                                <li class="list-disc">Amigos de esperanza ({{$rfriends}})</li>
                             </ul>
                         </div>
                     </div>
@@ -47,13 +47,13 @@
                     </div>
 
                     <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">40</h4>
+                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalMission}}</h4>
                         <div class="text-pink-700 font-bold">MISIÓN</div>
                         <div class="text-gray-500 text-xs">
                             <ul>
-                                <li class="list-disc">Estudios biblicos en la semana</li>
-                                <li class="list-disc">Visitas misioneras en el semana</li>
-                                <li class="list-disc">Entrega de publicaciones adventistas en el semana</li>
+                                <li class="list-disc">Estudios biblicos en la semana ({{$mestudy}})</li>
+                                <li class="list-disc">Visitas misioneras en el semana ({{$mvisits}})</li>
+                                <li class="list-disc">Entrega de publicaciones adventistas en el semana ({{$mpublications}})</li>
                             </ul>
                         </div>
                     </div>

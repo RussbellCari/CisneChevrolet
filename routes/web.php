@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Admin\AttendanceMain;
+use App\Livewire\Admin\GroupMain;
 use App\Livewire\Admin\MemberMain;
 use App\Livewire\Dashboard\Main;
 use App\Livewire\Web\About;
@@ -26,4 +27,5 @@ Route::middleware([
     Route::get('/dashboard',Main::class)->name('dashboard');
     Route::get('/attendance',AttendanceMain::class)->name('attendance');
     Route::get('/members',MemberMain::class)->name('members');
+    Route::get('/groups',GroupMain::class)->name('groups');
 });

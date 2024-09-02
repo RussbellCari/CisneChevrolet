@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->unsignedBigInteger('indicator_id');
             $table->foreign('indicator_id')->references('id')->on('indicators')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
