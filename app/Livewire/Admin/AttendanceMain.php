@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin;
 
+use App\Events\Broadcast;
+use App\Events\DashboardSent;
 use App\Livewire\Dashboard\Main;
 use App\Models\Attendance;
 use App\Models\Group;
@@ -63,6 +65,7 @@ class AttendanceMain extends Component{
                 'title' => 'Dias de estudio de '.$member->firstname.' '.$member->lastname.' registrado...',
             ]);
         }
+
         $this->attendances=Attendance::where('date',now()->toDateString())->pluck('study','member_id');
         $this->dispatch('dashboard.main')->to(Main::class);
     }
@@ -255,6 +258,7 @@ class AttendanceMain extends Component{
                 'title' => 'Indicadores de comunión registrados...',
             ]);
         }
+        DashboardSent::dispatch($quantity);
     }
 
     public function confirmCommunion(){

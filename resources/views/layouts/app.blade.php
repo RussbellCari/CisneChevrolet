@@ -31,6 +31,8 @@
                 @livewire('dashboard.sidebar')
                 <div class="flex flex-col flex-1 overflow-hidden">
                     @livewire('dashboard.header')
+                    {{-- prueba laravel reverb --}}
+                    {{-- <livewire:delivery-history /> --}}
                     <main class="flex-1 overflow-x-hidden overflow-y-auto bg-indigo-100">
                         <div class="py-8 mx-auto">
                             {{ $slot }}

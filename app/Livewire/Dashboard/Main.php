@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Livewire\Admin\GroupMain;
 use App\Models\Member;
 use App\Models\Result;
 use Livewire\Attributes\On;
@@ -10,6 +9,7 @@ use Livewire\Component;
 
 class Main extends Component{
 
+    public array $packageStatuses = [];
 
     public function render(){
         $totalMembers=Member::count();
@@ -24,6 +24,12 @@ class Main extends Component{
         return view('livewire.dashboard.main',
         compact('totalMembers','totalCommunion','totalRelation','totalMission',
         'rpgroups','rfriends','mestudy','mvisits','mpublications'));
+    }
+
+    #[On('echo:termometer,DashboardSent')]
+    public function onRelationSent($event){
+        $this->packageStatuses[] = $event;
+        $this->render();
     }
 
 }

@@ -1,6 +1,9 @@
 <div class="mx-auto">
     <h3 class="mx-4 text-3xl font-medium text-gray-700">Dashboard</h3>
-
+    {{count($packageStatuses)}}
+    @foreach($packageStatuses as $status)
+        {{ $status['resultCommunion'] }}
+    @endforeach
     <div class="mt-4 mx-4">
         <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             <div class="w-full">
@@ -8,7 +11,6 @@
                     <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
                         <i class="text-white fa-solid fa-users text-2xl"></i>
                     </div>
-
                     <div class="mx-5">
                         <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalCommunion}}</h4>
                         <div class="text-indigo-700 font-bold">COMUNIÓN</div>
@@ -20,7 +22,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="w-full">
                 <div class="flex items-center h-40 px-5 py-6 bg-white rounded-md shadow-sm">
                     <div class="p-3 bg-orange-600 bg-opacity-75 rounded-full">
