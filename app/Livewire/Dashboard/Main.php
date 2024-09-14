@@ -21,9 +21,11 @@ class Main extends Component{
         $mestudy=Result::where('indicator_id',4)->sum('quantity');
         $mvisits=Result::where('indicator_id',5)->sum('quantity');
         $mpublications=Result::where('indicator_id',6)->sum('quantity');
+        $barData = $this->generateRandomData(5);
+        $pieData = $this->generateRandomData(3);
         return view('livewire.dashboard.main',
         compact('totalMembers','totalCommunion','totalRelation','totalMission',
-        'rpgroups','rfriends','mestudy','mvisits','mpublications'));
+        'rpgroups','rfriends','mestudy','mvisits','mpublications','barData','pieData'));
     }
 
     #[On('echo:termometer,DashboardSent')]
@@ -32,4 +34,11 @@ class Main extends Component{
         $this->render();
     }
 
+    private function generateRandomData($count){
+        $data = [];
+        for ($i = 0; $i < $count; $i++) {
+            $data[] = rand(1, 10);
+        }
+        return $data;
+    }
 }

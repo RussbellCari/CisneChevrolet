@@ -67,7 +67,6 @@ class AttendanceMain extends Component{
         }
 
         $this->attendances=Attendance::where('date',now()->toDateString())->pluck('study','member_id');
-        $this->dispatch('dashboard.main')->to(Main::class);
     }
 
     public function createRelation(){
@@ -160,6 +159,7 @@ class AttendanceMain extends Component{
             ]);
         }
         $this->reset(['isOpenRelation']);
+        DashboardSent::dispatch($this->nrelationGroups);
     }
 
     public function store_mission(){
@@ -230,6 +230,7 @@ class AttendanceMain extends Component{
             ]);
         }
         $this->reset(['isOpenMission']);
+        DashboardSent::dispatch($this->nrelationGroups);
     }
 
     public function store_communion(){

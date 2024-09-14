@@ -63,8 +63,13 @@
         </div>
     </div>
 
-
-    <div  class="flex flex-col mt-8 mx-4">
+    <div class="mt-4 mx-4">
+        <div class="grid md:grid-cols-2 gap-4">
+            <div id="container-bar"></div>
+            <div id="container-pie"></div>
+        </div>
+    </div>
+    {{-- <div  class="flex flex-col mt-8 mx-4">
         <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div
                 class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
@@ -380,5 +385,38 @@
                 </table>
             </div>
         </div>
-    </div>
+    </div> --}}
+@push('js')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    // Bar Chart
+    Highcharts.chart('container-bar', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Bar Chart'
+        },
+        series: [{
+            name: 'Bar Chart',
+            data: {!! json_encode($barData) !!}
+        }]
+    });
+
+    // Pie Chart
+    Highcharts.chart('container-pie', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Pie Chart'
+        },
+        series: [{
+            name: 'Pie Chart',
+            data: {!! json_encode($pieData) !!}
+        }]
+    });
+</script>
+@endpush
 </div>
+
