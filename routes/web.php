@@ -9,6 +9,7 @@ use App\Livewire\Admin\ProformaMain;
 use App\Livewire\Admin\RepuestoMain;
 use App\Livewire\Admin\RoleMain;
 use App\Livewire\Admin\UserMain;
+use App\Livewire\Admin\VehiculoMain;
 use App\Livewire\Dashboard\Main;
 use App\Livewire\Forms\ProformaForm;
 use App\Livewire\ProformaMain as LivewireProformaMain;
@@ -44,6 +45,8 @@ Route::middleware([
     Route::get('/mantenimientos',MantenimientoMain::class)->name('mantenimientos');
     Route::get('/clientes',ClienteMain::class)->name('clientes');
     Route::get('/repuestos',RepuestoMain::class)->name('repuestos');
+    Route::get('/vehiculos',VehiculoMain::class)->name('vehiculos');
+
 
 
 
