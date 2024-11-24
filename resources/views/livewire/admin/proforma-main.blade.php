@@ -1,4 +1,3 @@
-
 <div class="py-2">
     <div class="mx-6 mb-4">
         <h2 class="text-3xl font-bold text-gray-800">Proformas</h2>

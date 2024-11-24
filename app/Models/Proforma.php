@@ -6,7 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Proforma extends Model
+
 {
+    use HasFactory;
+    protected $guarded = ['id'];
+    protected $fillable = [
+        'nombre',
+        'fecha_emision',
+        'subtotal',
+        'impuestos',
+        'total',
+        'cliente_id',
+        'vehiculo_id',
+        'vehiculocliente_id',
+        'repuesto_id',
+        'mantenimiento_id',
+    ];
+
+
+
     public function cliente()
 {
     return $this->belongsTo(Cliente::class);
