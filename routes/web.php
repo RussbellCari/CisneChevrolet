@@ -5,8 +5,10 @@ use App\Livewire\Admin\ClienteMain;
 use App\Livewire\Admin\GroupMain;
 use App\Livewire\Admin\MantenimientoMain;
 use App\Livewire\Admin\MemberMain;
+use App\Livewire\Admin\NotaVentaMain;
 use App\Livewire\Admin\ProformaMain;
 use App\Livewire\Admin\RepuestoMain;
+use App\Livewire\Admin\ReservaMain;
 use App\Livewire\Admin\RoleMain;
 use App\Livewire\Admin\UserMain;
 use App\Livewire\Admin\VehiculoMain;
@@ -36,16 +38,17 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard',Main::class)->name('dashboard');
-    Route::get('/attendance',AttendanceMain::class)->name('attendance');
-    Route::get('/members',MemberMain::class)->name('members');
-    Route::get('/groups',GroupMain::class)->name('groups');
-    Route::get('/roles',RoleMain::class)->name('role');
+
     Route::get('/users',UserMain::class)->name('user');
     Route::get('/proformas',ProformaMain::class)->name('proformas');
     Route::get('/mantenimientos',MantenimientoMain::class)->name('mantenimientos');
     Route::get('/clientes',ClienteMain::class)->name('clientes');
     Route::get('/repuestos',RepuestoMain::class)->name('repuestos');
     Route::get('/vehiculos',VehiculoMain::class)->name('vehiculos');
+    Route::get('/reservas',ReservaMain::class)->name('reservas');
+    Route::get('/notasVenta',NotaVentaMain::class)->name('notasVenta');
+
+
 
 
 

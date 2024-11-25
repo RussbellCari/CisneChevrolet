@@ -9,9 +9,7 @@ use App\Models\Proforma;
 use App\Models\Repuesto;
 use App\Models\Vehiculo;
 use App\Models\VehiculoCliente;
-use Livewire\Attributes\On;
 use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
 use WireUi\Traits\WireUiActions;
 
@@ -26,6 +24,19 @@ class ProformaMain extends Component
     public ProformaForm $form;
     public ?Proforma $proforma;
     public $active=true;
+    protected $rules = [
+        'form.cliente_id' => 'required|exists:clientes,id',
+        'form.vehiculo_id' => 'nullable|exists:vehiculos,id',
+        'form.vehiculocliente_id' => 'nullable|exists:vehiculo_clientes,id',
+        'form.repuesto_id' => 'nullable|exists:repuestos,id',
+        'form.mantenimiento_id' => 'nullable|exists:mantenimientos,id',
+        'form.nombre' => 'required|string',
+        'form.fecha_emision' => 'required|date',
+        'form.subtotal' => 'required|numeric',
+        'form.impuestos' => 'required|numeric',
+        'form.total' => 'required|numeric',
+    ];
+
 
     public function render(){
         $proformas=Proforma::where('nombre','LIKE','%'.$this->search.'%')->latest('id')->paginate();

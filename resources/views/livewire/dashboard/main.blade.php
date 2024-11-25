@@ -4,64 +4,7 @@
     @foreach($packageStatuses as $status)
         {{ $status['resultCommunion'] }}
     @endforeach
-    <div class="mt-4 mx-4">
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <div class="w-full">
-                <div class="flex items-center h-40 px-5 py-6 bg-white rounded-md shadow-sm">
-                    <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
-                        <i class="text-white fa-solid fa-users text-2xl"></i>
-                    </div>
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalCommunion}}</h4>
-                        <div class="text-indigo-700 font-bold">COMUNIÓN</div>
-                        <div class="text-gray-500 text-xs">
-                            <ul>
-                                <li class="list-disc">Estudio diario de la Biblia y la lección</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full">
-                <div class="flex items-center h-40 px-5 py-6 bg-white rounded-md shadow-sm">
-                    <div class="p-3 bg-orange-600 bg-opacity-75 rounded-full">
-                        <i class="text-white fa-solid fa-users-gear text-2xl"></i>
-                    </div>
 
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalRelation}}</h4>
-                        <div class="text-orange-700 font-bold">RELACIÓN</div>
-                        <div class="text-gray-500 text-xs">
-                            <ul>
-                                <li class="list-disc">Participación en grupos pequeños ({{$rpgroups}})</li>
-                                <li class="list-disc">Amigos de esperanza ({{$rfriends}})</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-full">
-                <div class="flex items-center h-40 px-5 py-6 bg-white rounded-md shadow-sm">
-                    <div class="p-3 bg-pink-600 bg-opacity-75 rounded-full">
-                        <i class="text-white fa-solid fa-people-roof text-2xl"></i>
-                    </div>
-
-                    <div class="mx-5">
-                        <h4 class="text-2xl font-semibold text-gray-700">{{$totalMembers}}/{{$totalMission}}</h4>
-                        <div class="text-pink-700 font-bold">MISIÓN</div>
-                        <div class="text-gray-500 text-xs">
-                            <ul>
-                                <li class="list-disc">Estudios biblicos en la semana ({{$mestudy}})</li>
-                                <li class="list-disc">Visitas misioneras en el semana ({{$mvisits}})</li>
-                                <li class="list-disc">Entrega de publicaciones adventistas en el semana ({{$mpublications}})</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="mt-4 mx-4">
         <div class="grid md:grid-cols-2 gap-4">

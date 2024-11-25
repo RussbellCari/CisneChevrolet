@@ -13,4 +13,9 @@ class Repuesto extends Model
     public function proformas(){
        return $this->hasMany(Proforma::class);
    }
+
+   public function notaVentas()
+   {
+       return $this->hasMany(NotaVenta::class);
+   }
 }

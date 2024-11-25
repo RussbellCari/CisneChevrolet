@@ -18,4 +18,8 @@ class Mantenimiento extends Model
 {
     return $this->belongsTo(VehiculoCliente::class);
 }
+public function notaVentas()
+{
+    return $this->hasMany(NotaVenta::class);
+}
 }

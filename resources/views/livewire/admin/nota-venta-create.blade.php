@@ -1,4 +1,4 @@
-<x-modal-card title="Registro de Proforma" wire:model.defer="isOpen">
+<x-modal-card title="Registro de Nota de Venta" wire:model.defer="isOpen">
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 px-3">
 
         <!-- Cliente -->
@@ -41,19 +41,25 @@
             @endforeach
         </x-native-select>
 
-        <!-- Información adicional de Proforma -->
-        <x-input label="Nombre" placeholder="Descripción de la proforma" wire:model="form.nombre" />
+        <x-native-select label="Reserva" wire:model="form.reserva_id">
+            <option value="">Seleccione un repuesto</option>
+            @foreach ($reservas as $reserva)
+                <option value="{{ $reserva->id }}">{{ $reserva->id }}</option>
+            @endforeach
+        </x-native-select>
+
+        <!-- Información adicional de la Nota de Venta -->
+        <x-input label="Nombre" placeholder="Descripción de la nota de venta" wire:model="form.nombre" />
         <x-input type="date" label="Fecha de emisión" wire:model="form.fecha_emision" />
         <x-input label="Subtotal" placeholder="0.00" wire:model="form.subtotal" prefix="S/." />
-        <x-input label="Impuestos" placeholder="0.00" wire:model="form.impuestos" prefix="S/." />
-        <x-input label="Total" placeholder="0.00" wire:model="form.total" prefix="S/." />
+        <x-input label="Pago" placeholder="0.00" wire:model="form.pago" prefix="S/." />
 
     </div>
 
     <x-slot name="footer">
         <div class="flex justify-end gap-x-2">
-            <x-button flat label="Cancelar" x-on:click="close()" />
-            <x-button primary label="Registrar" wire:click="store()" />
+            <x-button flat label="Cancelar" x-on:click="close()" class="bg-gray-700 text-white hover:bg-gray-600" />
+            <x-button primary label="Registrar" wire:click="store()" class="bg-gray-700 text-white hover:bg-gray-600" />
         </div>
     </x-slot>
 </x-modal-card>

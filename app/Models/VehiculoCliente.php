@@ -19,4 +19,11 @@ class VehiculoCliente extends Model
     public function proformas(){
         return $this->hasMany(Proforma::class);
     }
+
+
+   // Relación con el modelo NotaVenta
+   public function notaVentas()
+   {
+       return $this->hasMany(NotaVenta::class);
+   }
 }

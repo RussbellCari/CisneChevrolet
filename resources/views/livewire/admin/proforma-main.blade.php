@@ -66,7 +66,7 @@
                   <td class="px-6 py-4 text-xs">{{ optional($item->vehiculo)->marca ?? 'No disponible' }}</td>
                   <td class="px-6 py-4 text-xs">{{ optional($item->vehiculocliente)->marca ?? 'No disponible' }}</td>
                   <td class="px-6 py-4 text-xs">{{ optional($item->repuesto)->nombre ?? 'No disponible' }}</td>
-                  <td class="px-6 py-4 text-xs">{{ optional($item->mantenimiento)->nombre ?? 'No disponible' }}</td>
+                  <td class="px-6 py-4 text-xs">{{ optional($item->mantenimiento)->descripcion ?? 'no disponible' }}</td>
                   <td class="px-6 py-4 text-xs">{{$item->nombre}}</td>
                   <td class="px-6 py-4 text-xs">{{$item->fecha_de_emision}}</td>
                   <td class="px-6 py-4 text-xs">{{$item->subtotal}}</td>

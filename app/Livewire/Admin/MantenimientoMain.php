@@ -68,21 +68,28 @@ class MantenimientoMain extends Component
         ]);
     }
 
-    public function store(){
-        $this->validate();
-        if(!isset($this->mantenimiento->id)){
+    public function store()
+    {
+        $this->validate([
+            'form.descripcion' => 'required|string',
+            'form.costo' => 'required|numeric',
+            'form.vehiculocliente_id' => 'required|exists:vehiculo_clientes,id',
+        ]);
+
+        if (!isset($this->mantenimiento->id)) {
             Mantenimiento::create($this->form->all());
             $this->notification()->send([
                 'icon' => 'success',
                 'title' => 'Registro creado...',
             ]);
-        }else{
+        } else {
             $this->mantenimiento->update($this->form->all());
             $this->notification()->send([
                 'icon' => 'success',
                 'title' => 'Registro actualizado...',
             ]);
         }
+
         $this->reset(['isOpen']);
     }
 

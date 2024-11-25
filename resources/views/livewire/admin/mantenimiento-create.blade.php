@@ -6,8 +6,8 @@
 
         <x-native-select label="Vehículo Cliente" wire:model="form.vehiculocliente_id">
             <option>Seleccione un vehículo</option>
-            @foreach ($vehiculosClientes as $vehiculoCliente)
-                <option value="{{$vehiculoCliente->id}}">{{$vehiculoCliente->descripcion}}</option>
+            @foreach ($vehiculo_clientes as $vehiculocliente)
+                <option value="{{$vehiculocliente->id}}">{{$vehiculocliente->descripcion}}</option>
             @endforeach
         </x-native-select>
     </div>
