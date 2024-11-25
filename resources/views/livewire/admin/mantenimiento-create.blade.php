@@ -4,12 +4,13 @@
 
         <x-input label="Costo" type="number" step="0.01" placeholder="Ingrese el costo" wire:model="form.costo" />
 
-        <x-native-select label="Vehículo Cliente" wire:model="form.vehiculocliente_id">
-            <option>Seleccione un vehículo</option>
-            @foreach ($vehiculo_clientes as $vehiculocliente)
-                <option value="{{$vehiculocliente->id}}">{{$vehiculocliente->descripcion}}</option>
-            @endforeach
-        </x-native-select>
+               <!-- Vehículo del Cliente -->
+               <x-native-select label="Vehículo del Cliente" wire:model="form.vehiculocliente_id">
+                <option value="">Seleccione un vehículo del cliente</option>
+                @foreach ($vehiculo_clientes as $vehiculocliente)
+                    <option value="{{ $vehiculocliente->id }}">{{ $vehiculocliente->marca }}</option>
+                @endforeach
+            </x-native-select>
     </div>
 
     <x-slot name="footer">

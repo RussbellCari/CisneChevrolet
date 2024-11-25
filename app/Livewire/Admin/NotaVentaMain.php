@@ -69,13 +69,14 @@ class NotaVentaMain extends Component
         $this->resetValidation();
     }
 
-    public function edit(NotaVenta $notaVenta)
-    {
-        $this->notaVenta = $notaVenta;
-        $this->form = $notaVenta->toArray(); // Llenamos el formulario con los datos de la nota de venta
-        $this->isOpen = true;
+    public function edit(NotaVenta $notaVenta){
+        // dd($proforma);
+        $this->notaVenta=$notaVenta;
+        $this->form->fill($notaVenta);
+        $this->isOpen=true;
         $this->resetValidation();
     }
+
 
     public function destroy(NotaVenta $notaVenta)
     {
