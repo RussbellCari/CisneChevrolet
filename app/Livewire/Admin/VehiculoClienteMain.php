@@ -11,3 +11,4 @@ class VehiculoClienteMain extends Component
         return view('livewire.admin.vehiculo-cliente-main');
     }
 }
+

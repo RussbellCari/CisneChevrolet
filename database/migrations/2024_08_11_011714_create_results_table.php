@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->integer('quantity');
-            $table->unsignedBigInteger('group_id');
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+
             $table->unsignedBigInteger('indicator_id');
             $table->foreign('indicator_id')->references('id')->on('indicators')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

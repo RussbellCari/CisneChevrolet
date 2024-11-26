@@ -2,7 +2,7 @@
     <div class="flex h-screen bg-purple-700">
         <div class="w-full max-w-xs m-auto bg-indigo-100 rounded p-5">
             <header>
-                <img class="w-20 mx-auto mb-5" src="assets/img/logo.png" />
+                <img class="w-20 mx-auto mb-5" src="assets/img/fondo1.jpeg" />
             </header>
             <x-validation-errors class="mb-4" />
             @session('status')

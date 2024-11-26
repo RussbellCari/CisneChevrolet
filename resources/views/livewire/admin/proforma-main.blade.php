@@ -64,7 +64,7 @@
                             </td>
                             <td class="px-6 py-4">{{ optional($item->cliente)->nombre ?? 'No disponible' }}</td>
                             <td class="px-6 py-4">{{ optional($item->vehiculo)->marca ?? 'No disponible' }}</td>
-                            <td class="px-6 py-4">{{ optional($item->vehiculocliente)->marca ?? 'No disponible' }}</td>
+                            <td class="px-6 py-4">{{ optional($item->vehiculocliente)->placa?? 'No disponible' }}</td>
                             <td class="px-6 py-4">{{ optional($item->repuesto)->nombre ?? 'No disponible' }}</td>
                             <td class="px-6 py-4">{{ optional($item->mantenimiento)->descripcion ?? 'No disponible' }}</td>
                             <td class="px-6 py-4">{{$item->nombre}}</td>

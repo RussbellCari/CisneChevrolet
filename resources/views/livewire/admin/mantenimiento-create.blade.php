@@ -1,23 +1,56 @@
-<x-modal-card title="Registro de Mantenimiento" wire:model.defer="isOpen">
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 px-3">
-        <x-textarea label="Descripción" placeholder="Descripción del mantenimiento" wire:model="form.descripcion" />
-
-        <x-input label="Costo" type="number" step="0.01" placeholder="Ingrese el costo" wire:model="form.costo" />
-
-               <!-- Vehículo del Cliente -->
-               <x-native-select label="Vehículo del Cliente" wire:model="form.vehiculocliente_id">
-                <option value="">Seleccione un vehículo del cliente</option>
-                @foreach ($vehiculo_clientes as $vehiculocliente)
-                    <option value="{{ $vehiculocliente->id }}">{{ $vehiculocliente->marca }}</option>
+<div>
+    <form wire:submit.prevent="submit">
+        <!-- Vehículo Cliente -->
+        <div class="mb-4">
+            <label for="vehiculo_cliente_id" class="form-label">Seleccionar Vehículo</label>
+            <select wire:model="vehiculo_cliente_id" id="vehiculo_cliente_id" class="form-control">
+                <option value="">Seleccione un vehículo</option>
+                @foreach($vehiculos as $vehiculo)
+                    <option value="{{ $vehiculo->id }}">
+                        {{ $vehiculo->placa }} ({{ $vehiculo->cliente->nombre }})
+                    </option>
                 @endforeach
-            </x-native-select>
-    </div>
-
-    <x-slot name="footer">
-        <div class="flex justify-end gap-x-2">
-            <x-button flat label="Cancelar" x-on:click="close()" />
-            <x-button primary label="Registrar" wire:click="store()" />
+            </select>
+            @error('vehiculo_cliente_id') <span class="error">{{ $message }}</span> @enderror
         </div>
-    </x-slot>
-</x-modal-card>
 
+        <!-- Descripción -->
+        <div class="mb-4">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea wire:model="descripcion" id="descripcion" class="form-control" rows="3"></textarea>
+            @error('descripcion') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Costo -->
+        <div class="mb-4">
+            <label for="costo" class="form-label">Costo Aproximado</label>
+            <input wire:model="costo" id="costo" type="number" class="form-control" step="0.01">
+            @error('costo') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Fecha y Hora -->
+        <div class="mb-4">
+            <label for="disponibilidad_atencion_id" class="form-label">Fecha y Hora de Mantenimiento</label>
+            <select wire:model="disponibilidad_atencion_id" id="disponibilidad_atencion_id" class="form-control">
+                <option value="">Selecciona una fecha y hora</option>
+                @foreach($disponibilidades as $disponibilidad)
+                    <option value="{{ $disponibilidad->id }}">
+                        {{ $disponibilidad->fecha }} - {{ $disponibilidad->hora }}
+                    </option>
+                @endforeach
+            </select>
+            @error('disponibilidad_atencion_id') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Botón Guardar -->
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary">Guardar Mantenimiento</button>
+        </div>
+    </form>
+
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+</div>

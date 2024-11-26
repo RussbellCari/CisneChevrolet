@@ -63,7 +63,7 @@
                             </td>
                             <td class="px-6 py-4 text-xs">{{ optional($notaVenta->cliente)->nombre ?? 'No disponible' }}</td>
                             <td class="px-6 py-4 text-xs">{{ optional($notaVenta->vehiculo)->marca ?? 'No disponible' }}</td>
-                            <td class="px-6 py-4 text-xs">{{ optional($notaVenta->vehiculocliente)->marca ?? 'No disponible' }}</td>
+                            <td class="px-6 py-4 text-xs">{{ optional($notaVenta->vehiculocliente)->placa ?? 'No disponible' }}</td>
                             <td class="px-6 py-4 text-xs">{{ optional($notaVenta->reserva)->id ?? 'No disponible' }}</td>
                             <td class="px-6 py-4 text-xs">{{ optional($notaVenta->repuesto)->nombre ?? 'No disponible' }}</td>
                             <td class="px-6 py-4 text-xs">{{ optional($notaVenta->mantenimiento)->descripcion ?? 'No disponible' }}</td>

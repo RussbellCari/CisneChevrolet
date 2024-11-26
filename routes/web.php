@@ -2,11 +2,14 @@
 
 use App\Livewire\Admin\AttendanceMain;
 use App\Livewire\Admin\ClienteMain;
+use App\Livewire\Admin\ConsultaDisponibilidad;
 use App\Livewire\Admin\GroupMain;
+use App\Livewire\Admin\MantenimientoAgendaMain;
 use App\Livewire\Admin\MantenimientoMain;
 use App\Livewire\Admin\MemberMain;
 use App\Livewire\Admin\NotaVentaMain;
 use App\Livewire\Admin\ProformaMain;
+use App\Livewire\Admin\RegistroMantenimientoForm;
 use App\Livewire\Admin\RepuestoMain;
 use App\Livewire\Admin\ReservaMain;
 use App\Livewire\Admin\RoleMain;
@@ -41,12 +44,16 @@ Route::middleware([
 
     Route::get('/users',UserMain::class)->name('user');
     Route::get('/proformas',ProformaMain::class)->name('proformas');
-    Route::get('/mantenimientos',MantenimientoMain::class)->name('mantenimientos');
     Route::get('/clientes',ClienteMain::class)->name('clientes');
     Route::get('/repuestos',RepuestoMain::class)->name('repuestos');
     Route::get('/vehiculos',VehiculoMain::class)->name('vehiculos');
     Route::get('/reservas',ReservaMain::class)->name('reservas');
     Route::get('/notasVenta',NotaVentaMain::class)->name('notasVenta');
+    Route::get('/mantenimientos',MantenimientoAgendaMain::class)->name('mantenimientos');
+
+    Route::get('/consulta-disponibilidad', ConsultaDisponibilidad::class)->name('consulta-disponibilidad');
+
+    Route::get('/registro-mantenimiento/{selectedDate}/{selectedTime}', RegistroMantenimientoForm::class)->name('registro-mantenimiento');
 
 
 

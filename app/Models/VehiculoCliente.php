@@ -26,4 +26,16 @@ class VehiculoCliente extends Model
    {
        return $this->hasMany(NotaVenta::class);
    }
+
+   public function vehiculo()
+   {
+       return $this->belongsTo(Vehiculo::class, 'vehiculo_id');
+
+   }
+   public function cliente()
+   {
+       return $this->belongsTo(Cliente::class, 'cliente_id');
+   }
+
+
 }
