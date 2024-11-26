@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\RegistroMantenimiento;
 use App\Models\DisponibilidadAtencion;
 use App\Models\VehiculoCliente;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class RegistroMantenimientoForm extends Component
@@ -16,9 +17,12 @@ class RegistroMantenimientoForm extends Component
     public $disponibilidad_atencion_id;
     public $vehiculos;
     public $disponibilidades;
+    public $fechasDisponibles;
+public $horariosDisponibles = null;
 
     public $selectedDate;
     public $selectedTime;
+
 
     public function mount($selectedDate, $selectedTime)
     {
